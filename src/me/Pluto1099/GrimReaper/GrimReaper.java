@@ -31,7 +31,7 @@ public class GrimReaper extends JavaPlugin {
 			player.sendMessage(ChatColor.YELLOW + "I told you I would get my revenge.");
 		    player.setHealth(0);
 		}
-		return false;
+		return true;
 		
 	}
 	
