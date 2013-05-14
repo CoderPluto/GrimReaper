@@ -2,6 +2,7 @@ package me.Pluto1099.GrimReaper;
 
 import java.util.logging.Logger;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -28,14 +29,10 @@ public class GrimReaper extends JavaPlugin {
 	
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args){
 		Player player = (Player) sender;
-		if(commandLabel.equalsIgnoreCase("reap")){
+		if(commandLabel.equalsIgnoreCase("death")){
 			player.sendMessage(ChatColor.YELLOW + this.getConfig().getString("message"));
 		    player.setHealth(0);
-		}
-		return true;
-		
+		    Bukkit.broadcastMessage(ChatColor.YELLOW + "Reaper got Revenge on " + ChatColor.WHITE + player.getDisplayName());
+		} return true;
 	}
-	
-	
-	
 }
