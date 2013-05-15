@@ -11,6 +11,7 @@ import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class GrimReaper extends JavaPlugin {
+	String prefix = "[Reaper]";
 	public final Logger logger = Logger.getLogger("Minecraft");
 	public static GrimReaper plugin;
 	
@@ -30,9 +31,22 @@ public class GrimReaper extends JavaPlugin {
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args){
 		Player player = (Player) sender;
 		if(commandLabel.equalsIgnoreCase("death")){
-			player.sendMessage(ChatColor.YELLOW + this.getConfig().getString("message"));
-		    player.setHealth(0);
-		    Bukkit.broadcastMessage(ChatColor.YELLOW + "Reaper got Revenge on " + ChatColor.WHITE + player.getDisplayName());
+			if (args.length == 0) {
+				player.sendMessage(ChatColor.GOLD + prefix + ChatColor.YELLOW + this.getConfig().getString("message"));
+			    player.setHealth(0);
+			    Bukkit.broadcastMessage(ChatColor.GOLD + prefix + ChatColor.YELLOW + "Reaper got Revenge on " + ChatColor.WHITE + player.getDisplayName());
+			} else if (args.length == 1) {
+				if (player.hasPermission("Death.kill.others")) {
+					Player p = Bukkit.getServer().getPlayer(args[0]);
+					p.setHealth(0);
+					p.chat("I've Been Killed by " + ChatColor.RED + sender + "!");
+				} else {
+					sender.sendMessage(ChatColor.GOLD + prefix + ChatColor.RED + "No Permission!");
+				}
+			} else {
+				sender.sendMessage(ChatColor.GOLD + prefix + ChatColor.RED + "Invalid Arguments!");
+			}
 		} return true;
 	}
+	
 }
