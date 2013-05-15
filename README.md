@@ -3,7 +3,7 @@ GrimReaper
 
 Simple suicide plugin.
 
-Please don't redistribute my plugin unless I give you my permission.
+Please don't redistribute my plugin unless Rmarmorstein or myself give you permission!
 
 See it on Bukkit! 
 
