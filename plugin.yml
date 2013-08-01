@@ -2,6 +2,8 @@ name: GrimReaper
 main: me.Pluto1099.GrimReaper.GrimReaper
 version: 1.0.0
 description: Death everywhere, you can't hide it!
+authors: [Pluto1099, Rmarmorstein]
+softdepend: [Vault]
 commands:
    death:
       description: You can't hide from the reaper forever. This command WILL kill you.
